@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:dgx/features/bottompages/bottombar.dart';
 import 'package:dgx/main.dart';
+import 'package:dgx/viewhome/pagesview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class _SplashState extends State<Splash> {
       Timer(Duration(seconds: 2), () {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => NavigationBarScreen()),
+          MaterialPageRoute(builder: (context) => Pageview()),
         );
       });
     });
