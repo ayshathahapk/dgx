@@ -1,4 +1,4 @@
-package com.example.dgx
+package com.tecnavis.dgx
 
 import io.flutter.embedding.android.FlutterActivity
 
