@@ -71,15 +71,15 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchWhatsApp() async {
     final Uri url = Uri.parse(
-        'https://wa.me/+971 501341604'); // Replace with your WhatsApp link
+        'https://wa.me/+971506478250'); // Replace with your WhatsApp link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
   }
 
   void _launchMail() async {
-    final Uri url = Uri.parse(
-        'mailto:hellopuregoldllc@gmail.com'); // Replace with your mail link
+    final Uri url =
+        Uri.parse('mailto:info@digiex.ae'); // Replace with your mail link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -87,7 +87,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchContact() async {
     final Uri url =
-        Uri.parse('tel:971 501341604'); // Replace with your contact number
+        Uri.parse('tel:+971506478250'); // Replace with your contact number
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -95,7 +95,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchMap() async {
     final Uri url = Uri.parse(
-        'https://goo.gl/maps/gJrcoRhhevPRJLBv7?g_st=aw'); // Replace with your map link
+        'https://maps.app.goo.gl/SFBD6w9okzU3Pwxo9'); // Replace with your map link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -136,7 +136,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
                     context,
                     FontAwesomeIcons.whatsapp,
                     'WhatsApp',
-                    '+971501341604',
+                    '+971506478250',
                     _launchWhatsApp,
                   ),
                   _buildCard(
@@ -150,7 +150,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
                     context,
                     FontAwesomeIcons.phone,
                     'Call Us',
-                    '+971 501341604',
+                    '+971506478250',
                     _launchContact,
                   ),
                   _buildCard(

@@ -121,7 +121,7 @@ class CommodityList extends ConsumerWidget {
                       // print("Consumer is rebulding");
 
                       return Container(
-                          height: SizeUtils.height * 0.4,
+                          height: SizeUtils.height * 0.46,
                           child: ListView.builder(
                             itemCount: commodity.length,
                             itemBuilder: (context, index) {

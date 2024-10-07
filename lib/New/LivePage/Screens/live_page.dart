@@ -84,7 +84,6 @@ class _LivePageState extends ConsumerState<LivePage> {
         Padding(
           padding: EdgeInsets.only(left: 4.5.h, right: 4.5.h),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
