@@ -47,22 +47,22 @@ class SpotRateModel {
 class Info {
   final String id;
   final String createdBy;
-  final double silverAskSpread;
-  final double silverBidSpread;
-  final double goldAskSpread;
-  final double goldBidSpread;
-  final double copperAskSpread;
-  final double copperBidSpread;
-  final double platinumAskSpread;
-  final double platinumBidSpread;
-  final double goldLowMargin;
-  final double goldHighMargin;
-  final double silverLowMargin;
-  final double silverHighMargin;
-  final double copperLowMargin;
-  final double copperHighMargin;
-  final double platinumLowMargin;
-  final double platinumHighMargin;
+  final String silverAskSpread;
+  final String silverBidSpread;
+  final String goldAskSpread;
+  final String goldBidSpread;
+  final String copperAskSpread;
+  final String copperBidSpread;
+  final String platinumAskSpread;
+  final String platinumBidSpread;
+  final String goldLowMargin;
+  final String goldHighMargin;
+  final String silverLowMargin;
+  final String silverHighMargin;
+  final String copperLowMargin;
+  final String copperHighMargin;
+  final String platinumLowMargin;
+  final String platinumHighMargin;
   final List<Commodity> commodities;
   final int v;
 
@@ -92,22 +92,22 @@ class Info {
   Info copyWith({
     String? id,
     String? createdBy,
-    double? silverAskSpread,
-    double? silverBidSpread,
-    double? goldAskSpread,
-    double? goldBidSpread,
-    double? copperAskSpread,
-    double? copperBidSpread,
-    double? platinumAskSpread,
-    double? platinumBidSpread,
-    double? goldLowMargin,
-    double? goldHighMargin,
-    double? silverLowMargin,
-    double? silverHighMargin,
-    double? copperLowMargin,
-    double? copperHighMargin,
-    double? platinumLowMargin,
-    double? platinumHighMargin,
+    String? silverAskSpread,
+    String? silverBidSpread,
+    String? goldAskSpread,
+    String? goldBidSpread,
+    String? copperAskSpread,
+    String? copperBidSpread,
+    String? platinumAskSpread,
+    String? platinumBidSpread,
+    String? goldLowMargin,
+    String? goldHighMargin,
+    String? silverLowMargin,
+    String? silverHighMargin,
+    String? copperLowMargin,
+    String? copperHighMargin,
+    String? platinumLowMargin,
+    String? platinumHighMargin,
     List<Commodity>? commodities,
     int? v,
   }) =>
@@ -137,22 +137,22 @@ class Info {
   factory Info.fromMap(Map<String, dynamic> json) => Info(
         id: json["_id"],
         createdBy: json["createdBy"],
-        silverAskSpread: json["silverAskSpread"].toDouble(),
-        silverBidSpread: json["silverBidSpread"].toDouble(),
-        goldAskSpread: json["goldAskSpread"].toDouble(),
-        goldBidSpread: json["goldBidSpread"].toDouble(),
-        copperAskSpread: json["copperAskSpread"].toDouble(),
-        copperBidSpread: json["copperBidSpread"].toDouble(),
-        platinumAskSpread: json["platinumAskSpread"].toDouble(),
-        platinumBidSpread: json["platinumBidSpread"].toDouble(),
-        goldLowMargin: json["goldLowMargin"].toDouble(),
-        goldHighMargin: json["goldHighMargin"].toDouble(),
-        silverLowMargin: json["silverLowMargin"].toDouble(),
-        silverHighMargin: json["silverHighMargin"].toDouble(),
-        copperLowMargin: json["copperLowMargin"].toDouble(),
-        copperHighMargin: json["copperHighMargin"].toDouble(),
-        platinumLowMargin: json["platinumLowMargin"].toDouble(),
-        platinumHighMargin: json["platinumHighMargin"].toDouble(),
+        silverAskSpread: json["silverAskSpread"].toString() ?? "",
+        silverBidSpread: json["silverBidSpread"].toString() ?? "",
+        goldAskSpread: json["goldAskSpread"].toString() ?? "",
+        goldBidSpread: json["goldBidSpread"].toString() ?? "",
+        copperAskSpread: json["copperAskSpread"].toString() ?? "",
+        copperBidSpread: json["copperBidSpread"].toString() ?? "",
+        platinumAskSpread: json["platinumAskSpread"].toString() ?? "",
+        platinumBidSpread: json["platinumBidSpread"].toString() ?? "",
+        goldLowMargin: json["goldLowMargin"].toString() ?? "",
+        goldHighMargin: json["goldHighMargin"].toString() ?? "",
+        silverLowMargin: json["silverLowMargin"].toString() ?? "",
+        silverHighMargin: json["silverHighMargin"].toString() ?? "",
+        copperLowMargin: json["copperLowMargin"].toString() ?? "",
+        copperHighMargin: json["copperHighMargin"].toString() ?? "",
+        platinumLowMargin: json["platinumLowMargin"].toString() ?? "",
+        platinumHighMargin: json["platinumHighMargin"].toString() ?? "",
         commodities: List<Commodity>.from(
             json["commodities"].map((x) => Commodity.fromMap(x))),
         v: json["__v"],
@@ -185,7 +185,7 @@ class Info {
 class Commodity {
   final String metal;
   final int purity;
-  final int unit;
+  final double unit;
   final String weight;
   final int buyPremium;
   final int sellPremium;
@@ -208,7 +208,7 @@ class Commodity {
   Commodity copyWith({
     String? metal,
     int? purity,
-    int? unit,
+    double? unit,
     String? weight,
     int? buyPremium,
     int? sellPremium,
@@ -231,7 +231,7 @@ class Commodity {
   factory Commodity.fromMap(Map<String, dynamic> json) => Commodity(
         metal: json["metal"],
         purity: json["purity"],
-        unit: json["unit"],
+        unit: json["unit"].toDouble(),
         weight: json["weight"],
         buyPremium: json["buyPremium"],
         sellPremium: json["sellPremium"],

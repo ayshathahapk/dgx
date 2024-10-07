@@ -68,23 +68,6 @@ class _LivePageState extends ConsumerState<LivePage> {
         );
   }
 
-  double getUnitMultiplier(String weight) {
-    switch (weight) {
-      case "GM":
-        return 1;
-      case "KG":
-        return 1000;
-      case "TTB":
-        return 116.6400;
-      case "TOLA":
-        return 11.664;
-      case "OZ":
-        return 31.1034768;
-      default:
-        return 1;
-    }
-  }
-
   @override
   void dispose() {
     _timer.cancel();
@@ -96,10 +79,11 @@ class _LivePageState extends ConsumerState<LivePage> {
   );
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Column(
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 4.5.h, right: 4.5.h),
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
@@ -121,10 +105,6 @@ class _LivePageState extends ConsumerState<LivePage> {
                               .toUpperCase(),
                           style: CustomPoppinsTextStyles.bodyText)
                     ],
-                  ),
-                  CustomImageView(
-                    imagePath: ImageConstants.logo,
-                    width: 90.h,
                   ),
                   Column(
                     children: [
@@ -148,7 +128,9 @@ class _LivePageState extends ConsumerState<LivePage> {
                 height: 55.h,
                 decoration: BoxDecoration(
                   color: appTheme.gold,
-                  borderRadius: BorderRadius.circular(15.v),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.h),
+                      topRight: Radius.circular(15.h)),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -168,7 +150,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                   ],
                 ),
               ),
-              space(),
+              space(h: 5.v),
 
               ///First Table Live Rate of GOLD and SILVER.
               Consumer(
@@ -194,21 +176,21 @@ class _LivePageState extends ConsumerState<LivePage> {
                             ref1.read(rateBidValue.notifier).update(
                               (state) {
                                 return liveRateData.gold!.bid +
-                                    (spreadNow.goldBidSpread);
+                                    (double.parse(spreadNow.goldBidSpread));
                               },
                             );
                             ref1.read(goldAskPrice.notifier).update(
                               (state) {
                                 final res = (liveRateData.gold!.bid +
-                                    (spreadNow.goldAskSpread));
+                                    (double.parse(spreadNow.goldAskSpread)));
                                 return res;
                               },
                             );
                             ref1.read(silverAskPrice.notifier).update(
                               (state) {
                                 final res = (liveRateData.gold!.bid +
-                                    (spreadNow.goldAskSpread) +
-                                    (spreadNow.goldBidSpread) +
+                                    (double.parse(spreadNow.goldAskSpread)) +
+                                    (double.parse(spreadNow.goldBidSpread)) +
                                     0.5);
                                 return res;
                               },
@@ -219,8 +201,11 @@ class _LivePageState extends ConsumerState<LivePage> {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: Colors.black38,
-                                  borderRadius: BorderRadius.circular(10.v)),
+                                color: appTheme.mainWhite,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(10.h),
+                                    bottomRight: Radius.circular(10.h)),
+                              ),
                               width: SizeUtils.width,
                               height: SizeUtils.height * 0.1,
                               child: Row(
@@ -247,7 +232,8 @@ class _LivePageState extends ConsumerState<LivePage> {
                                     children: [
                                       ValueDisplayWidget(
                                         value: (liveRateData.gold!.bid +
-                                            (spreadNow.goldBidSpread)),
+                                            (double.parse(
+                                                spreadNow.goldBidSpread))),
                                         // value: ref1.watch(goldAskPrice),
                                         // value: (liveRateData.gold.bid +
                                         //     (spreadNow?.editedBidSpreadValue ??
@@ -262,7 +248,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                             size: 20.v,
                                           ),
                                           Text(
-                                            "${liveRateData.gold!.low + (spreadNow.goldLowMargin)}",
+                                            "${liveRateData.gold!.low + (double.parse(spreadNow.goldLowMargin))}",
                                             style: CustomPoppinsTextStyles
                                                 .bodyTextSemiBold,
                                           )
@@ -275,8 +261,10 @@ class _LivePageState extends ConsumerState<LivePage> {
                                     children: [
                                       ValueDisplayWidget2(
                                         value: ((liveRateData.gold!.bid +
-                                            (spreadNow.goldBidSpread) +
-                                            (spreadNow.goldAskSpread) +
+                                            (double.parse(
+                                                spreadNow.goldBidSpread)) +
+                                            (double.parse(
+                                                spreadNow.goldAskSpread)) +
                                             0.5)),
                                         // value: ref1.watch(silverAskPrice),
                                         // value: (liveRateData.gold.bid +
@@ -295,88 +283,7 @@ class _LivePageState extends ConsumerState<LivePage> {
                                             size: 20.v,
                                           ),
                                           Text(
-                                            "${liveRateData.gold?.high ?? 0 + (spreadNow.goldHighMargin)}",
-                                            style: CustomPoppinsTextStyles
-                                                .bodyTextSemiBold,
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            space(),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.black38,
-                                  borderRadius: BorderRadius.circular(10.v)),
-                              width: SizeUtils.width,
-                              height: SizeUtils.height * 0.1,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  RichText(
-                                      text: TextSpan(children: [
-                                    TextSpan(
-                                        text: "Silver",
-                                        style: CustomPoppinsTextStyles
-                                            .bodyTextGold),
-                                    TextSpan(
-                                        text: "OZ",
-                                        style: GoogleFonts.poppins(
-                                            // fontFamily: marine,
-                                            color: appTheme.gold,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.fSize))
-                                  ])),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ValueDisplayWidgetSilver1(
-                                          // value: 0,
-                                          value: (liveRateData.silver?.bid ??
-                                              0 +
-                                                  (spreadNow.silverBidSpread ??
-                                                      0))),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            CupertinoIcons
-                                                .arrowtriangle_down_fill,
-                                            color: appTheme.red700,
-                                            size: 20.v,
-                                          ),
-                                          Text(
-                                            "${liveRateData.silver?.low ?? 0 + (spreadNow.silverLowMargin)}",
-                                            style: CustomPoppinsTextStyles
-                                                .bodyTextSemiBold,
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ValueDisplayWidgetSilver2(
-                                          // value: 0,
-                                          value: ((liveRateData.silver!.bid +
-                                              (spreadNow.silverBidSpread) +
-                                              (spreadNow.silverAskSpread) +
-                                              0.05))),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            CupertinoIcons
-                                                .arrowtriangle_up_fill,
-                                            color: appTheme.mainGreen,
-                                            size: 20.v,
-                                          ),
-                                          Text(
-                                            "${liveRateData.silver?.high ?? 0 + (spreadNow.silverHighMargin)}",
+                                            "${liveRateData.gold?.high ?? 0 + (double.parse(spreadNow.goldHighMargin))}",
                                             style: CustomPoppinsTextStyles
                                                 .bodyTextSemiBold,
                                           )
@@ -606,32 +513,39 @@ class _LivePageState extends ConsumerState<LivePage> {
               // ),
             ],
           ),
-          if (ref.watch(bannerBool))
-            Positioned(
-              top: 15.v,
-              right: 50.h,
-              child: Transform.rotate(
-                angle: -Math.pi / 4,
-                child: Consumer(
-                  builder: (context, refBanner, child) {
-                    return Container(
-                      width: SizeUtils.width,
-                      height: 30.h,
-                      color: Colors.red,
-                      child: Center(
-                        child: AutoScrollText(
-                          delayBefore: const Duration(seconds: 1),
-                          "           Market is closed. It will open soon!            ",
-                          style: CustomPoppinsTextStyles.buttonText,
-                        ),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: CustomImageView(
+            imagePath: ImageConstants.logo,
+            width: 90.h,
+          ),
+        ),
+        if (ref.watch(bannerBool))
+          Positioned(
+            top: 15.v,
+            right: 50.h,
+            child: Transform.rotate(
+              angle: -Math.pi / 4,
+              child: Consumer(
+                builder: (context, refBanner, child) {
+                  return Container(
+                    width: SizeUtils.width,
+                    height: 30.h,
+                    color: Colors.red,
+                    child: Center(
+                      child: AutoScrollText(
+                        delayBefore: const Duration(seconds: 1),
+                        "           Market is closed. It will open soon!            ",
+                        style: CustomPoppinsTextStyles.buttonText,
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 }

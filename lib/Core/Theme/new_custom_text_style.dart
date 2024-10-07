@@ -27,7 +27,7 @@ class CustomPoppinsTextStyles {
 
   static final TextStyle bodyTextSemiBold = GoogleFonts.poppins(
       // fontFamily: marine,
-      color: appTheme.whiteA700,
+      color: appTheme.black900,
       fontWeight: FontWeight.w500,
       fontSize: 18.fSize);
 
