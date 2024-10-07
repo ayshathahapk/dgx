@@ -5,7 +5,7 @@ class ImageConstants {
 
   /// Images
   static const logo = "$imagePathImg/DGX.png";
-  static const logoBg = "$imagePathImg/background.png";
+  // static const logoBg = "$imagePathImg/background.png";
   static const logoText = "$imagePathImg/DGX.png";
   // static const bg = "$imagePath/fitness_bg.jpg";
   // static const rsaIcon = "$imagePath/rsa_logo.jpg";

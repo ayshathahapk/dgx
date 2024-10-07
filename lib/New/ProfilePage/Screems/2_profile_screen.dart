@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dgx/Core/Utils/size_utils.dart';
-
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../Core/CommenWidgets/custom_image_view.dart';
 import '../../../Core/CommenWidgets/space.dart';
 import '../../../Core/Theme/new_custom_text_style.dart';
@@ -73,7 +71,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchWhatsApp() async {
     final Uri url = Uri.parse(
-        'https://wa.me/+971542172259'); // Replace with your WhatsApp link
+        'https://wa.me/+971 501341604'); // Replace with your WhatsApp link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -81,7 +79,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchMail() async {
     final Uri url = Uri.parse(
-        'mailto:pulparambilgold@gmail.com'); // Replace with your mail link
+        'mailto:hellopuregoldllc@gmail.com'); // Replace with your mail link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -89,7 +87,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchContact() async {
     final Uri url =
-        Uri.parse('tel:+971506478995'); // Replace with your contact number
+        Uri.parse('tel:971 501341604'); // Replace with your contact number
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -97,7 +95,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
 
   void _launchMap() async {
     final Uri url = Uri.parse(
-        'https://www.google.com/maps/search/?api=1&query=25.2737112,55.2999215'); // Replace with your map link
+        'https://goo.gl/maps/gJrcoRhhevPRJLBv7?g_st=aw'); // Replace with your map link
     if (!await launchUrl(url)) {
       throw 'Could not launch $url';
     }
@@ -106,14 +104,9 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Container(
-        padding: EdgeInsets.all(10.h),
-        width: SizeUtils.width,
-        height: SizeUtils.height,
-        // decoration: const BoxDecoration(
-            // image: DecorationImage(
-            //     image: AssetImage(ImageConstants.logoBg), fit: BoxFit.cover)),
+      backgroundColor: appTheme.black900,
+      body: Padding(
+        padding: EdgeInsets.only(left: 18.0, right: 18.v),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -143,7 +136,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
                     context,
                     FontAwesomeIcons.whatsapp,
                     'WhatsApp',
-                    '+971542172259',
+                    '+971501341604',
                     _launchWhatsApp,
                   ),
                   _buildCard(
@@ -157,7 +150,7 @@ class _ProfileScreen2State extends ConsumerState<ProfileScreen2> {
                     context,
                     FontAwesomeIcons.phone,
                     'Call Us',
-                    '+971506478995',
+                    '+971 501341604',
                     _launchContact,
                   ),
                   _buildCard(
