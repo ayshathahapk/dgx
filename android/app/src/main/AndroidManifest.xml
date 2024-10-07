@@ -16,7 +16,7 @@
 
 
     <application
-        android:label="dgx"
+        android:label="DGX"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 
